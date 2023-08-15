@@ -1,0 +1,76 @@
+<?php
+/**
+ * Category layered navigation state
+ *
+ * @var $block \OpenTechiz\AdminNote\Block\CheckFrontend
+ */
+$block->getTestArgument();
+?>
+<style>
+    .add{
+        width: 50px;
+        padding: 5px;
+        background: green;
+    }
+    .delete {
+        width: 50px;
+        padding: 5px;
+        background: red;
+    }
+</style>
+<h1>test frontend</h1>
+<a href="#" title="Remove item" class="action action-delete" data-post="{&quot;action&quot;:&quot;http:\/\/magento24.local\/checkout\/cart\/delete\/&quot;,&quot;data&quot;:{&quot;id&quot;:&quot;20&quot;,&quot;uenc&quot;:&quot;aHR0cDovL21hZ2VudG8yNC5sb2NhbC9jaGVja291dC9jYXJ0Lw,,&quot;}}">
+    <span>
+        Remove item    </span>
+</a>
+<h1> test translsate: <?= __('Stone 1 Shape')?>
+<h1> test translsate đối với new direction đặt file csv chưa translate: <?= __('test new directories')?>
+<h1 style="color: red"> <?= __('ok di em')?>
+</h1>
+    <hr>
+    <table>
+        <tr>
+            <th>add</th>
+            <th>delete</th>
+        </tr>
+
+        <tr>
+            <td class="add">choi</td>
+            <td class="delete">choi</td>
+        </tr>
+        <tr>
+            <td class="add">luon</td>
+            <td class="delete">luon</td>
+        </tr>
+        <tr>
+            <td class="add">di</td>
+            <td class="delete">di</td>
+        </tr>
+        <tr>
+            <td class="add">ban</td>
+            <td class="delete">ban</td>
+        </tr>
+        <tr>
+            <td class="add">oi</td>
+            <td class="delete">oi</td>
+        </tr>
+    </table>
+
+<h1>TEST KNOCK OUT JS</h1>
+    <div id="custom-component" data-bind="scope:'trungcomponent'">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <script type="text/x-magento-init">
+        {
+            "#custom-component": {
+                "Magento_Ui/js/core/app": {
+                   "components": {
+                        "trungcomponent": {
+                            "component": "OpenTechiz_AdminNote/js/trung-component"
+                        }
+                    }
+                }
+            }
+        }
+        </script>
+    </div>
+

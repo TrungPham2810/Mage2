@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">adminnotes_adminnotes_listing.adminnotes_adminnotes_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>adminnotes_adminnotes_columns</spinner>
+        <deps>
+            <dep>adminnotes_adminnotes_listing.adminnotes_adminnotes_listing_data_source</dep>
+        </deps>
+    </settings>
+
+    <dataSource name="adminnotes_adminnotes_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">note_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>OpenTechiz_AdminNote::admin_note</aclResource>
+        <dataProvider class="OpenTechiz\AdminNote\Ui\Component\DataProvider" name="adminnotes_adminnotes_listing_data_source">
+            <settings>
+                <requestFieldName>note_id</requestFieldName>
+                <primaryFieldName>note_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <container name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="template" xsi:type="string">ui/grid/toolbar</item>
+            </item>
+        </argument>
+        <bookmark name="bookmarks">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/bookmarks/bookmarks</item>
+                    <item name="displayArea" xsi:type="string">dataGridActions</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="saveUrl" xsi:type="url" path="mui/bookmark/save"/>
+                        <item name="deleteUrl" xsi:type="url" path="mui/bookmark/delete"/>
+                        <item name="namespace" xsi:type="string">adminnotes_adminnotes_listing</item>
+                    </item>
+                </item>
+            </argument>
+        </bookmark>
+        <container name="columns_controls">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="columnsData" xsi:type="array">
+                        <item name="provider" xsi:type="string">adminnotes_adminnotes_listing.adminnotes_adminnotes_listing.adminnotes_adminnotes_columns</item>
+                    </item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/columns</item>
+                    <item name="displayArea" xsi:type="string">dataGridActions</item>
+                </item>
+            </argument>
+        </container>
+
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <filterSearch name="fulltext"/>
+
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">adminnotes_adminnotes_listing.adminnotes_adminnotes_listing.adminnotes_adminnotes_columns.ids</item>
+                    <item name="indexField" xsi:type="string">note_id</item>
+                </item>
+            </argument>
+
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete Notes</item>
+                        <item name="url" xsi:type="url" path="adminnotes/adminnotes/massDelete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Notes</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you want to delete selected Notes?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+
+            <action name="hide">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">hide</item>
+                        <item name="label" xsi:type="string" translate="true">Hide Notes</item>
+                        <item name="url" xsi:type="url" path="adminnotes/adminnotes/massHide"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Hide Notes</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you want to hide selected Notes?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+
+            <action name="unhide">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">unhide</item>
+                        <item name="label" xsi:type="string" translate="true">Unhide Notes</item>
+                        <item name="url" xsi:type="url" path="adminnotes/adminnotes/massUnhide"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Unhide Notes</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you want to unhide selected Notes?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+
+    </container>
+
+    <columns name="adminnotes_adminnotes_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>note_id</indexField>
+            </settings>
+        </selectionsColumn>
+
+        <column name="path_id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <editor>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <editorType>text</editorType>
+                </editor>
+                <label translate="true">Path ID</label>
+            </settings>
+        </column>
+
+        <column name="type" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <editor>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <editorType>text</editorType>
+                </editor>
+                <label translate="true">Type</label>
+            </settings>
+        </column>
+
+        <column name="note" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <editor>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <editorType>text</editorType>
+                </editor>
+                <label translate="true">Note</label>
+            </settings>
+        </column>
+
+
+        <column name="status" component="Magento_Ui/js/grid/columns/select" sortOrder="80">
+            <settings>
+                <options class="OpenTechiz\AdminNote\Model\AdminNote\Source\IsActive"/>
+                <filter>select</filter>
+                <editor>
+                    <editorType>select</editorType>
+                </editor>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+
+        <column name="created_by" component="Magento_Ui/js/grid/columns/select" sortOrder="85">
+            <settings>
+                <options class="OpenTechiz\AdminNote\Model\AdminNote\Source\Author"/>
+                <filter>select</filter>
+                <editor>
+                    <editorType>select</editorType>
+                </editor>
+                <dataType>select</dataType>
+                <label translate="true">Created By</label>
+            </settings>
+        </column>
+
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date" sortOrder="90">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Date Created</label>
+            </settings>
+        </column>
+
+        <actionsColumn name="go_path" class="OpenTechiz\AdminNote\Ui\Component\Listing\Column\GoPathAction">
+            <settings>
+                <indexField>note_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+                <label>Action</label>
+            </settings>
+        </actionsColumn>
+
+        <actionsColumn name="actions" class="OpenTechiz\AdminNote\Ui\Component\Listing\Column\Actions">
+            <settings>
+              <!--  <indexField>note_id</indexField>-->
+<!--                <label>Action</label>-->
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

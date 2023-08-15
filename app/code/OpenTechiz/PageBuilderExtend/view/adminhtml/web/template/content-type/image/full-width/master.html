@@ -1,0 +1,106 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<figure attr="data.main.attributes" ko-style="Object.assign({}, data.main.style(), !data.desktop_image.attributes().src ? {} : {borderStyle: 'none'})" css="data.main.css">
+    <a if="data.link.attributes().href" attr="data.link.attributes" ko-style="data.link.style" css="data.link.css">
+
+        <img if="data.desktop_image.attributes().enable_lazyload && data.desktop_image.attributes().src"
+             attr="data.desktop_image.attributes"
+             class="pagebuilder-mobile-hidden lazyload"
+             css="data.desktop_image.css"
+             ko-style="data.desktop_image.style"/>
+
+        <ifnot args="data.desktop_image.attributes().enable_lazyload">
+            <img if="data.desktop_image.attributes().src"
+                 attr="data.desktop_image.attributes"
+                 class="pagebuilder-mobile-hidden"
+                 css="data.desktop_image.css"
+                 ko-style="data.desktop_image.style"/>
+        </ifnot>
+
+
+        <img if="data.mobile_image.attributes().enable_lazyload && data.mobile_image.attributes().src"
+             attr="data.mobile_image.attributes"
+             class="pagebuilder-mobile-only lazyload"
+             css="data.mobile_image.css"
+             ko-style="data.mobile_image.style" />
+
+        <ifnot args="data.mobile_image.attributes().enable_lazyload">
+            <img if="data.mobile_image.attributes().src"
+                 attr="data.mobile_image.attributes"
+                 class="pagebuilder-mobile-only"
+                 css="data.mobile_image.css"
+                 ko-style="data.mobile_image.style" />
+        </ifnot>
+<!--  handle for image_media lazyload and not lazyload-->
+        <img if="data.image_media.attributes().enable_lazyload && data.image_media.attributes().src"
+             attr="data.image_media.attributes"
+             class="pagebuilder-image-media lazyload"
+             css="data.image_media.css"
+             ko-style="data.image_media.style" />
+        <ifnot args="data.image_media.attributes().enable_lazyload">
+            <img if="data.image_media.attributes().src"
+                 attr="data.image_media.attributes"
+                 class="pagebuilder-image-media"
+                 css="data.image_media.css"
+                 ko-style="data.image_media.style" />
+        </ifnot>
+    </a>
+
+    <ifnot args="data.link.attributes().href">
+
+        <img if="data.desktop_image.attributes().enable_lazyload && data.desktop_image.attributes().src"
+             attr="data.desktop_image.attributes"
+             class="pagebuilder-mobile-hidden lazyload"
+             css="data.desktop_image.css"
+             ko-style="data.desktop_image.style"/>
+        <ifnot args="data.desktop_image.attributes().enable_lazyload">
+            <img if="data.desktop_image.attributes().src"
+                 attr="data.desktop_image.attributes"
+                 class="pagebuilder-mobile-hidden"
+                 css="data.desktop_image.css"
+                 ko-style="data.desktop_image.style"/>
+        </ifnot>
+
+
+        <img if="data.mobile_image.attributes().enable_lazyload && data.mobile_image.attributes().src"
+             attr="data.mobile_image.attributes"
+             class="pagebuilder-mobile-only lazyload"
+             css="data.mobile_image.css"
+             ko-style="data.mobile_image.style" />
+
+        <ifnot args="data.mobile_image.attributes().enable_lazyload">
+            <img if="data.mobile_image.attributes().src"
+                 attr="data.mobile_image.attributes"
+                 class="pagebuilder-mobile-only"
+                 css="data.mobile_image.css"
+                 ko-style="data.mobile_image.style" />
+        </ifnot>
+
+<!--        handle for image_media lazyload and not lazyload-->
+        <img if="data.image_media.attributes().enable_lazyload && data.image_media.attributes().src"
+             attr="data.image_media.attributes"
+             class="pagebuilder-image-media lazyload"
+             css="data.image_media.css"
+             ko-style="data.image_media.style" />
+
+        <ifnot args="data.image_media.attributes().enable_lazyload">
+            <img if="data.image_media.attributes().src"
+                 attr="data.image_media.attributes"
+                 class="pagebuilder-image-media"
+                 css="data.image_media.css"
+                 ko-style="data.image_media.style" />
+        </ifnot>
+    </ifnot>
+
+    <figcaption if="data.caption.html()"
+                attr="data.caption.attributes"
+                css="data.caption.css"
+                html="data.caption.html"
+                ko-style="data.caption.style">
+    </figcaption>
+</figure>

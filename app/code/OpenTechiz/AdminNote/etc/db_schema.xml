@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="me_admin_note" resource="default" engine="innodb" comment="Me Admin Note">
+        <column xsi:type="int" name="note_id" padding="11" unsigned="true" nullable="false" identity="true" comment="Note Id"/>
+
+        <column xsi:type="varchar" name="path_id" nullable="true" length="255" comment="Path Id"/>
+
+        <column xsi:type="varchar" name="path" nullable="true" length="255" comment="Path"/>
+
+        <column xsi:type="varchar" name="title" nullable="true" length="255" comment="title"/>
+
+        <column xsi:type="text" name="note" nullable="true"  comment="Note"/>
+
+        <column xsi:type="int" name="created_by" padding="11" unsigned="true" nullable="false" identity="false" default="0" comment="Created By"/>
+
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+
+        <column xsi:type="varchar" name="type" nullable="true" length="50" default="note" comment="Type"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="note_id"/>
+        </constraint>
+
+    </table>
+
+    <table name="me_admin_note_user_relation" resource="default" engine="innodb" comment="Me Admin Note User Relation">
+        <column xsi:type="int" name="id" padding="11" unsigned="true" nullable="false" identity="true" comment="Id"/>
+
+        <column xsi:type="int" name="note_id" padding="11" unsigned="true" nullable="false" identity="false" default="0" comment=" Note Id"/>
+
+        <column xsi:type="int" name="user_id" padding="11" unsigned="true" nullable="false" identity="false" default="0" comment="User Id"/>
+
+        <column xsi:type="int" name="status" padding="11" unsigned="true" nullable="false" identity="false" default="0" comment="Status"/>
+
+        <constraint xsi:type="foreign" referenceId="ME_ADMIN_NOTE_USER_RELATION_NOTE_ID_ME_ADMIN_NOTE_NOTE_ID" table="me_admin_note_user_relation"
+                    column="note_id" referenceTable="me_admin_note" referenceColumn="note_id" onDelete="CASCADE"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="production_request" resource="default" engine="innodb" comment="Production Request">
+        <column xsi:type="int" name="request_id" padding="11" unsigned="true" nullable="false" identity="true" comment="Request ID"/>
+        <column xsi:type="int" name="order_item_id" padding="10" nullable="true" unsigned="true" comment="Sale order item id"/>
+        <column xsi:type="int" name="personalized_id" padding="11" nullable="false" comment="Personalized item id"/>
+        <column xsi:type="int" name="return_item_id" padding="11" nullable="true" unsigned="true" comment="return item id"/>
+        <column xsi:type="varchar" name="type" nullable="true" length="20" comment="Type"/>
+        <column xsi:type="varchar" name="order_types" nullable="true" length="255" comment="Order Types"/>
+        <column xsi:type="int" name="processing_status" padding="11" nullable="false" comment="Processing status"/>
+        <column xsi:type="timestamp" name="created_at" default="CURRENT_TIMESTAMP" nullable="true" comment="Created at"/>
+        <column xsi:type="timestamp" name="updated_at" default="CURRENT_TIMESTAMP" on_update="true" nullable="true" comment="Updated at"/>
+        <column xsi:type="timestamp" name="production_updated_at" nullable="true" comment="Production Updated at"/>
+        <column xsi:type="timestamp" name="ordered_at" nullable="true" comment="Ordered at"/>
+        <column xsi:type="timestamp" name="manufacturer_date" nullable="true" comment="Manufacturer Date"/>
+        <column xsi:type="timestamp" name="casting_take_off_date" nullable="true" comment="Casting Take Off Date"/>
+        <column xsi:type="varchar" name="internal_comment" nullable="true" length="255" comment="Internal comment"/>
+        <column xsi:type="text" name="process_internal_comment" nullable="true" comment="Process internal comment"/>
+        <column xsi:type="text" name="stone_internal_comment" nullable="true" comment="Internal comment about stone"/>
+        <column xsi:type="varchar" name="broke_comment" nullable="true" length="255" comment="Broken comment"/>
+        <column xsi:type="int" name="reason_broke" padding="11" nullable="true" unsigned="true" comment="Reason Broke"/>
+        <column xsi:type="int" name="count_broke" padding="11" nullable="false" unsigned="true" default="0" comment="Count Broke"/>
+        <column xsi:type="text" name="notice_comment" nullable="true" comment="Notice comment"/>
+        <column xsi:type="int" name="sent_out" padding="10" nullable="true" default="0" comment="sent out status"/>
+        <column xsi:type="smallint" name="taken_status" padding="5" nullable="true" default="0" comment="Taken status"/>
+        <column xsi:type="text" name="note" nullable="true" comment="Note"/>
+        <column xsi:type="varchar" name="barcode" nullable="true" length="255" comment="Barcode Id"/>
+        <column xsi:type="int" name="printed_pdf_with_stone" padding="11" default="0" nullable="true" comment="Printed manufacturer pdf with stone status"/>
+        <column xsi:type="int" name="next_step" padding="11" nullable="true" default="0" comment="Next Step"/>
+        <!-- columns only for migrate  -->
+        <column xsi:type="smallint" name="stone_request_status" padding="5" unsigned="false" nullable="true" default="0" comment="Status Stone Request" />
+        <!-- end columns only for migrate  -->
+
+        <!--from table personalized_product_item-->
+        <column xsi:type="varchar" name="grid_item_sku" nullable="true" length="255" comment="Item Sku"/>
+        <column xsi:type="varchar" name="grid_item_name" nullable="true" length="255" comment="Item Name"/>
+        <column xsi:type="timestamp" name="grid_current_delivery_date" nullable="true" comment="Current Delivery Date"/>
+        <column xsi:type="smallint" name="grid_current_count_delivery_change" padding="5" nullable="true" default="0" comment="Current Count Delivery Change"/>
+        <column xsi:type="varchar" name="grid_manufacturer" nullable="true" length="32" comment="Manufacturer"/>
+        <column xsi:type="smallint" name="grid_state" padding="5" unsigned="false" nullable="true" identity="false" comment="Item State"/>
+        <column xsi:type="timestamp" name="grid_arrived_at" nullable="true" comment="Arrived shipout At"/>
+        <column xsi:type="varchar" name="grid_currency_code" nullable="true" length="3" comment="Currency Code"/>
+        <column xsi:type="decimal" name="grid_item_cost" scale="2" precision="12" unsigned="false" default="0.00" nullable="true" comment="Item Cost"/>
+        <column xsi:type="varchar" name="grid_gold_type" nullable="true" length="50" comment="Gold Type"/>
+        <!--from table sales_order-->
+        <column xsi:type="smallint" name="grid_store_id" unsigned="true" nullable="true" identity="false" comment="Store ID"/>
+        <column xsi:type="varchar" name="grid_order_status" nullable="true" length="32" comment="Order Status"/>
+        <column xsi:type="varchar" name="grid_increment_id" nullable="true" length="32" comment="Increment ID"/>
+        <column xsi:type="timestamp" name="grid_order_created_at" on_update="false" nullable="true" comment="Created At"/>
+        <column xsi:type="varchar" name="grid_shipping_method" nullable="true" length="120"/>
+        <column xsi:type="varchar" name="grid_shipping_description" nullable="true" length="255" comment="Shipping Description"/>
+        <column xsi:type="decimal" name="grid_shipping_amount" scale="4" precision="20" unsigned="false" nullable="true" comment="Shipping Amount"/>
+        <column xsi:type="varchar" name="grid_base_currency_code" nullable="true" length="3" comment="Base Currency Code"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="request_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="PRODUCTION_REQUEST_ORDER_ITEM_ID_SALES_ORDER_ITEM_ITEM_ID" table="production_request"
+                    column="order_item_id" referenceTable="sales_order_item" referenceColumn="item_id" onDelete="CASCADE"/>
+        <constraint xsi:type="unique" referenceId="PRODUCTION_REQUEST_REQUEST_ID_PERSONALIZED_ID">
+            <column name="request_id"/>
+            <column name="personalized_id"/>
+        </constraint>
+        <index referenceId="PRODUCTION_REQUEST_TYPE" indexType="btree">
+            <column name="type"/>
+        </index>
+        <index referenceId="PRODUCTION_REQUEST_CREATED_AT" indexType="btree">
+            <column name="created_at"/>
+        </index>
+        <index referenceId="PRODUCTION_REQUEST_UPDATED_AT" indexType="btree">
+            <column name="updated_at"/>
+        </index>
+        <index referenceId="PRODUCTION_REQUEST_PERSONALIZED_ID" indexType="btree">
+            <column name="personalized_id"/>
+        </index>
+        <index referenceId="PRODUCTION_REQUEST_PROCESSING_STATUS" indexType="btree">
+            <column name="processing_status"/>
+        </index>
+        <index referenceId="PRODUCTION_REQUEST_BARCODE" indexType="btree">
+            <column name="barcode"/>
+        </index>
+        <index referenceId="PRODUCTION_REQUEST_MAIN_GRID_CURRENT_DELIVERY_DATE" indexType="btree">
+            <column name="grid_current_delivery_date"/>
+        </index>
+        <index referenceId="PRODUCTION_REQUEST_MAIN_GRID_MANUFACTURER" indexType="btree">
+            <column name="grid_manufacturer"/>
+        </index>
+        <index referenceId="PRODUCTION_REQUEST_MAIN_GRID_STATE" indexType="btree">
+            <column name="grid_state"/>
+        </index>
+        <index referenceId="PRODUCTION_REQUEST_MAIN_GRID_GOLD_TYPE" indexType="btree">
+            <column name="grid_gold_type"/>
+        </index>
+        <index referenceId="PRODUCTION_REQUEST_MAIN_GRID_INCREMENT_ID" indexType="btree">
+            <column name="grid_increment_id"/>
+        </index>
+        <index referenceId="PRODUCTION_REQUEST_MAIN_GRID_ORDER_STATUS" indexType="btree">
+            <column name="grid_order_status"/>
+        </index>
+        <index referenceId="PRODUCTION_REQUEST_MAIN_GRID_CREATED_AT" indexType="btree">
+            <column name="grid_order_created_at"/>
+        </index>
+    </table>
+</schema>

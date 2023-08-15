@@ -1,0 +1,31 @@
+<?php
+/**
+ * @var $block \Magento\Framework\View\Element\Template
+ */
+
+?>
+<h1>test section data</h1>
+<div class="wk-customsection"data-bind="scope: 'section'">
+    <p data-bind="text: customsection().okdiem"></p>
+</div>
+<div class="admin__field-value" data-message="<?= $block->escapeHtmlAttr(__('{width}^{height} px')) ?>"></div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "section": {
+                        "component": "OpenTechiz_AdminNote/js/section"
+                    }
+                }
+            }
+        }
+    }
+</script>
+
+
+
+
+<div id="custom-component2" data-bind="scope:'trungcomponent'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>

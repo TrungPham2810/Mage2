@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="OpenTechiz\AdminNote\Api\Data\AdminNoteInterface" type="OpenTechiz\AdminNote\Model\AdminNote" />
+    <preference for="OpenTechiz\AdminNote\Api\Data\AdminNoteSearchResultInterface" type="OpenTechiz\AdminNote\Model\AdminNoteSearchResult" />
+    <preference for="OpenTechiz\AdminNote\Api\AdminNoteRepositoryInterface" type="OpenTechiz\AdminNote\Model\AdminNoteRepository"/>
+    <preference for="Magento\Catalog\Model\Product\Visibility" type="OpenTechiz\AdminNote\Catalog\Model\Product\Visibility" />
+    <preference for="OpenTechiz\AdminNote\Block\TestPlugin" type="OpenTechiz\AdminNote\Block\TestPluginOverride" />
+    <!--<preference for="Magento\Catalog\Model\Indexer\Category\Product\AbstractAction" type="OpenTechiz\AdminNote\Catalog\Model\Indexer\Category\Product\AbstractAction" />-->
+    <preference for="Magento\Catalog\Model\Indexer\Category\Product\Action\Full" type="OpenTechiz\AdminNote\Catalog\Model\Indexer\Category\Product\Action\Full" />
+    <!--<type name="Magento\Catalog\Model\Product\Visibility">-->
+        <!--<plugin name="visibility.plugin" type="OpenTechiz\AdminNote\Plugin\Catalog\Model\Product\Visibility"/>-->
+    <!--</type>-->
+
+    <type name="OpenTechiz\AdminNote\Model\ResourceModel\AdminNote\Grid\Collection" >
+        <arguments>
+            <argument name="mainTable" xsi:type="string">me_admin_note</argument>
+            <argument name="eventPrefix" xsi:type="string">adminnotes_adminnote_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">adminnote_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">OpenTechiz\AdminNote\Model\ResourceModel\AdminNote\Collection</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="adminnotes_adminnotes_listing_data_source" xsi:type="string">OpenTechiz\AdminNote\Model\ResourceModel\AdminNote\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="OpenTechiz\AdminNote\Block\TestPlugin">
+        <plugin name="test.plugin" type="OpenTechiz\AdminNote\Plugin\TestPluginAroundAfterBefore"/>
+    </type>
+
+    <type name="OpenTechiz\AdminNote\Controller\Index\Index">
+        <arguments>
+            <argument name="storeManager" xsi:type="object">OpenTechiz\AdminNote\Block\StoreManager</argument>
+        </arguments>
+    </type>
+</config>

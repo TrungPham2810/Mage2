@@ -1,0 +1,13 @@
+<div class="adminnote-container">
+    <div class="notification-global adminnote-new adminnote-type-note">
+        <select class="note-page-type" >
+            <?php foreach ( $block->getTypes() as $k => $v ) :?>
+                <option value="<?php echo $k; ?>"><?php echo $v; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <textarea class="note-page-text" cols="100" style="height: 26px"></textarea>
+        <input type="hidden" class="user-admin-id" value = "<?php echo $block->getUserId() ?>">
+        <button class="button-save-note"><span>Save Note</span></button>
+        <button class="button-cancel-note"><span>Cancel</span></button>
+    </div>
+</div>

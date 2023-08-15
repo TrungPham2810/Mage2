@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_PageBuilder:etc/content_type.xsd">
+    <type name="video"
+          label="Video"
+          component="Magento_PageBuilder/js/content-type"
+          preview_component="Magento_PageBuilder/js/content-type/video/preview"
+          master_component="Magento_PageBuilder/js/content-type/video/master"
+          form="pagebuilder_video_form"
+          menu_section="media"
+          icon="icon-pagebuilder-video"
+          sortOrder="20"
+          translate="label">
+        <children default_policy="deny"/>
+        <appearances>
+            <appearance default="true"
+                        name="default"
+                        preview_template="Magento_PageBuilder/content-type/video/default/preview"
+                        master_template="Magento_PageBuilder/content-type/video/default/master"
+                        reader="Magento_PageBuilder/js/master-format/read/configurable">
+                <elements>
+                    <element name="video">
+                        <attribute name="video_source" source="src" converter="Magento_PageBuilder/js/content-type/video/converter/attribute/videosrc" preview_converter="Magento_PageBuilder/js/content-type/video/converter/attribute/videosrc"/>
+                        <attribute name="autoplay" storage_key="autoplay" source="autoplay" converter="Magento_PageBuilder/js/content-type/video/converter/attribute/autoplay"/>
+                        <attribute name="muted_video" storage_key="autoplay" source="muted" converter="Magento_PageBuilder/js/content-type/video/converter/attribute/autoplay"/>
+                        <attribute name="loop" storage_key="loop" source="loop" converter="OpenTechiz_PageBuilderExtend/js/content-type/video/converter/attribute/loop"/>
+                        <attribute name="playsinline" storage_key="playsinline" source="playsinline" converter="OpenTechiz_PageBuilderExtend/js/content-type/video/converter/attribute/playsinline"/>
+                    </element>
+                </elements>
+            </appearance>
+        </appearances>
+    </type>
+</config>

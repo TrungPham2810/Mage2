@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">helloworld_post_form.helloworld_post_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Post Information</item>
+        <item name="reverseMetadataMerge" xsi:type="boolean">true</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+<!--            <button name="save" class="ViMagento\HelloWorld\Block\Adminhtml\Edit\SaveButton"/>-->
+<!--            <button name="back">-->
+<!--                <url path="helloworld/post/index"/>-->
+<!--                <class>back</class>-->
+<!--                <label translate="true">Back</label>-->
+<!--            </button>-->
+            <button name="save">
+                <url path="helloworld/post/save"/>
+                <class>primary</class>
+                <label translate="true">Save</label>
+            </button>
+        </buttons>
+        <namespace>helloworld_post_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>helloworld_post_form.helloworld_post_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="helloworld_post_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="helloworld/post/save"/>
+        </settings>
+        <dataProvider class="ViMagento\HelloWorld\Model\Config\DataProvider" name="helloworld_post_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>post_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <label translate="true">Post Details</label>
+        </settings>
+        <field name="name" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">post</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="max_text_length" xsi:type="number">255</rule>
+                </validation>
+                <label translate="true">Name</label>
+                <dataType>text</dataType>
+                <visible>true</visible>
+            </settings>
+        </field>
+        <field name="content" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">post</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <label translate="true">Content</label>
+                <dataType>text</dataType>
+                <visible>true</visible>
+                <tooltip>
+                    <link>https://docs.magento.com/user-guide/configuration/scope.html</link>
+                    <description translate="true">If your Magento installation has multiple websites, you can edit the scope to associate the customer with a specific site.</description>
+                </tooltip>
+            </settings>
+        </field>
+        <field name="status" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+                <dataScope>status</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="ViMagento\HelloWorld\Model\Config\Status"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="overlay_color" sortOrder="80" formElement="colorPicker">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="disabledValues" xsi:type="array">
+                        <item name="none" xsi:type="string">never</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Overlay Color</label>
+                <componentType>colorPicker</componentType>
+                <placeholder translate="true">No Color</placeholder>
+                <additionalClasses>
+                    <class name="admin__field-medium">true</class>
+                </additionalClasses>
+                <validation>
+                    <rule name="validate-color" xsi:type="boolean">true</rule>
+                </validation>
+                <dataScope>overlay_color</dataScope>
+                <dataType>text</dataType>
+                <imports>
+                    <link name="setDisabled">ns = ${ $.ns }, index = show_overlay:value</link>
+                </imports>
+            </settings>
+            <formElements>
+                <colorPicker>
+                    <settings>
+                        <colorPickerMode>full</colorPickerMode>
+                        <colorFormat>hex</colorFormat>
+                    </settings>
+                </colorPicker>
+            </formElements>
+        </field>
+        <urlInput name="link_url" sortOrder="20" template="Magento_PageBuilder/form/element/url-input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Link</label>
+                <dataScope>link_url</dataScope>
+                <urlTypes class="Magento\Ui\Model\UrlInput\LinksConfigProvider"/>
+                <validation>
+                    <rule name="validate-message-no-link" xsi:type="boolean">true</rule>
+                    <rule name="validate-message-no-widget" xsi:type="boolean">true</rule>
+                </validation>
+                <imports>
+                    <link name="validation.validate-message-no-link">${$.parentName}.content:value</link>
+                    <link name="validation.validate-message-no-widget">${$.parentName}.content:value</link>
+                </imports>
+            </settings>
+        </urlInput>
+        <container name="container_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="template" xsi:type="string">ui/form/components/complex</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="label" xsi:type="string">Container Label</item>
+                    <item name="additionalClasses" xsi:type="string">sample-additional-class</item>
+                    <item name="text" xsi:type="string" translate="true"><![CDATA[<p>Container Text.</p>]]></item>
+                </item>
+            </argument>
+            <field name="sort_direction" sortOrder="20" formElement="select">
+                <settings>
+                    <dataType>text</dataType>
+                    <label translate="true">Sort Direction</label>
+<!--                    <dataScope>data.sort_direction</dataScope>-->
+                </settings>
+                <formElements>
+                    <select>
+                        <settings>
+                            <options class="ViMagento\HelloWorld\Model\Config\Status" />
+                            <caption translate="true">-- Please Select --</caption>
+                        </settings>
+                    </select>
+                </formElements>
+            </field>
+        </container>
+    </fieldset>
+</form>

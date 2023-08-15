@@ -1,0 +1,12 @@
+<h1>customer List.phtml</h1>
+
+<div id="customjs-component" data-bind="scope:'customer-list'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#customjs-component": {
+            "Magento_Ui/js/core/app": <?= /* @escapeNotVerified */ $block->getJsLayout() ?>
+        }
+    }
+    </script>
+</div>

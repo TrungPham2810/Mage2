@@ -1,0 +1,29 @@
+{
+    "me_admin_note": {
+        "column": {
+            "note_id": true,
+            "path_id": true,
+            "path": true,
+            "title": true,
+            "note": true,
+            "created_by": true,
+            "created_at": true,
+            "type": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "me_admin_note_user_relation": {
+        "column": {
+            "id": true,
+            "note_id": true,
+            "user_id": true,
+            "status": true
+        },
+        "constraint": {
+            "ME_ADMIN_NOTE_USER_RELATION_NOTE_ID_ME_ADMIN_NOTE_NOTE_ID": true,
+            "PRIMARY": true
+        }
+    }
+}

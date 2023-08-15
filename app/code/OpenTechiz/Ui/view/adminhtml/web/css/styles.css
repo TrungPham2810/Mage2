@@ -1,0 +1,35 @@
+.notification-global{margin:0;border-bottom:0}
+#adminnotes textarea{height:auto;font-size:12px;line-height:12px;padding:2px;overflow:hidden}
+#adminnotes input{width:100px}
+#adminnotes select,#adminnotes button,#adminnotes input{line-height:12px;font-size:11px;margin:0;vertical-align:top}
+#adminnotes{background-color:#ffffff}
+.notification-global {
+	background: no-repeat scroll 27px 5px #FFF9E9;
+	border-bottom: 1px solid #EEE2BE;
+	border-top: 1px solid #EEE2BE;
+	color: #444444;
+	font-size: 11px;
+	line-height: 16px;
+	margin: 0 0 -3px;
+	padding: 5px 27px 5px 47px;
+	position: relative;
+}
+.adminnote-new{background-image:url(../images/note.gif)}
+.adminnote-manage-note{padding-left:10px}
+.adminnote-manage-note small{vertical-align:top}
+.adminnote-type-note{background-image:url(../images/note.gif)}
+.adminnote-type-message{
+	background-image:url(../images/message.gif);
+	background-color: #FFFF00;
+}
+.adminnote-type-comment{background-image:url(../images/comment.gif);background-color:#D6F5FF}
+.adminnote-type-warning{background-image:url(../images/warning.gif);background-color:#FFC7C7}
+.adminnote-type-question{background-image:url(../images/question.gif);background-color:#D4E9FF}
+.adminnote-hidden{/*background-color:#f6f6f6*/display:none}
+.adminnote-note-edit .buttons {padding:2px 0}
+.adminnote-control{text-align:right;padding:0px 27px 2px 2px;font-size:11px;font-weight:bold;z-index:5}
+.adminnote-control a{display:block;color:#fff;padding:0px 10px 0px;text-decoration:none; border-width:0 1px 1px 1px;border-style:solid;border-color:#666;}
+.adminnote-control a:hover{text-decoration:underline}
+.adminnote-control .add-button{background-color:#ED6502;}
+.adminnote-control .show-hidden-button{background-color:#999;margin-left:-3px}
+.f-right { float:right;}

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+<!--            <block class="Magento\Framework\View\Element\Template"  name="custom_section" template="OpenTechiz_AdminNote::customsection.phtml"/>-->
+<!--&lt;!&ndash;            <block class="Magento\Framework\View\Element\Template"  name="xxxxxx" template="OpenTechiz_HelloWorld::check-frontend.phtml"/>&ndash;&gt;-->
+<!--            <block class="Magento\Framework\View\Element\Template"  name="yyyyy" template="OpenTechiz_AdminNote::check-js.phtml"/>-->
+<!--            <block class="OpenTechiz\AdminNote\Block\CheckFrontend" name="CheckFrontend">-->
+<!--                <arguments>-->
+<!--                    <argument name="ditmemay" xsi:type="array">-->
+<!--                        <item name="types" xsi:type="array">-->
+<!--                            <item name="form.input" xsi:type="array">-->
+<!--                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>-->
+<!--                                <item name="config" xsi:type="array">-->
+<!--                                    <item name="provider" xsi:type="string">checkoutProvider</item>-->
+<!--                                    <item name="deps" xsi:type="array">-->
+<!--                                        <item name="0" xsi:type="string">checkoutProvider</item>-->
+<!--                                    </item>-->
+<!--                                    <item name="template" xsi:type="string">ui/form/field</item>-->
+<!--                                    <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>-->
+<!--                                </item>-->
+<!--                            </item>-->
+<!--                        </item>-->
+<!--                        <item name="components" xsi:type="array">-->
+<!--                            <item name="summary-block-config" xsi:type="array">-->
+<!--                                <item name="component" xsi:type="string">uiComponent</item>-->
+<!--                                <item name="children" xsi:type="array">-->
+<!--                                    <item name="shipping-rates-validation" xsi:type="array">-->
+<!--                                        <item name="children" xsi:type="array">-->
+<!--                                            &lt;!&ndash;Step configuration components&ndash;&gt;-->
+<!--                                        </item>-->
+<!--                                    </item>-->
+<!--                                </item>-->
+<!--                            </item>-->
+<!--                            <item name="checkoutProvider" xsi:type="array">-->
+<!--                                <item name="component" xsi:type="string">uiComponent</item>-->
+<!--                            </item>-->
+<!--                        </item>-->
+<!--                    </argument>-->
+<!--                </arguments>-->
+<!--            </block>-->
+
+            <block class="OpenTechiz\AdminNote\Block\Customer\Lists" name="xxxxxx1" template="OpenTechiz_AdminNote::cache/x1.phtml"/>
+            <block class="OpenTechiz\AdminNote\Block\Customer\Lists" name="xxxxxx2" template="OpenTechiz_AdminNote::cache/x2.phtml"/>
+
+        </referenceContainer>
+    </body>
+</page>

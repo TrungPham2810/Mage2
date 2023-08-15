@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">adminnotes_form.adminnotes_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Admin Note</item>
+<!--        <item name="template" xsi:type="string">templates/form/collapsible</item>-->
+    </argument>
+    <settings>
+        <layout>
+            <navContainerName>left</navContainerName>
+            <type>tabs</type>
+        </layout>
+        <deps>
+            <dep>adminnotes_form.adminnotes_form_data_source</dep>
+        </deps>
+        <dataScope>data</dataScope>
+        <namespace>adminnotes_form</namespace>
+    </settings>
+    <dataSource name="adminnotes_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <dataProvider class="OpenTechiz\AdminNote\Model\DataProvider" name="adminnotes_form_data_source">
+            <settings>
+                <requestFieldName>note_id</requestFieldName>
+                <primaryFieldName>note_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+
+    </dataSource>
+
+    <fieldset name="tab1" sortOrder="10">
+        <settings>
+            <label translate="true">Note Information</label>
+        </settings>
+        <field name="note_id" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">note</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Note Id</label>
+                <dataScope>note_id</dataScope>
+                <visible>true</visible>
+            </settings>
+        </field>
+
+        <field name="path_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">note</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <dataScope>path_id</dataScope>
+                <label translate="true">Path Id</label>
+                <visible>true</visible>
+            </settings>
+        </field>
+        <container name="container_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="template" xsi:type="string">ui/form/components/complex</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="label" xsi:type="string">Container Label</item>
+                    <item name="additionalClasses" xsi:type="string">sample-additional-class</item>
+                    <item name="text" xsi:type="string" translate="true"><![CDATA[<p>Container Text.</p>]]></item>
+                </item>
+            </argument>
+            <field name="sort_direction"
+                   sortOrder="20"
+                   formElement="select">
+                <settings>
+                    <dataType>text</dataType>
+                    <label translate="true">Sort Direction</label>
+<!--                    <dataScope></dataScope>-->
+                </settings>
+                <formElements>
+                    <select>
+                        <settings>
+                            <options class="Vendor\Module\Model\Source\Config\SortDirection" />
+                            <caption translate="true">-- Please Select --</caption>
+                        </settings>
+                    </select>
+                </formElements>
+            </field>
+        </container>
+    </fieldset>
+
+    <fieldset name="tab2" class="OpenTechiz\AdminNote\Ui\Component\Form\AddressFieldset">
+        <settings>
+            <collapsible>false</collapsible>
+            <label translate="true">Test Tab</label>
+            <componentType>fieldset</componentType>
+            <additionalClasses>
+                <class name="customer-address-form">true</class>
+            </additionalClasses>
+        </settings>
+        <field name="path_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">note</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <dataScope>path_id</dataScope>
+                <label translate="true">Path Id</label>
+            </settings>
+        </field>
+    </fieldset>
+</form>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="empty"/>
+<!--    <referenceContainer name="page.wrapper">-->
+<!--        <referenceBlock name="view_quick_filter" remove="true" />-->
+<!--        <referenceBlock name="top_view" remove="true" />-->
+<!--        <referenceBlock name="navigation" remove="true" />-->
+<!--        <referenceBlock name="category.image" remove="true" />-->
+<!--        &lt;!&ndash;<referenceBlock name="product_list_toolbar" remove="true" />&ndash;&gt;-->
+<!--        &lt;!&ndash;<referenceBlock name="category.products.list" remove="true" />&ndash;&gt;-->
+<!--        <container name="header.container" as="header_container" label="Page Header Container" htmlTag="header" htmlClass="page-header" before="main.content"/>-->
+<!--        <container name="page.top" as="page_top" label="After Page Header" after="header.container"/>-->
+<!--        <container name="footer-container" as="footer" before="before.body.end" label="Page Footer Container" htmlTag="footer" htmlClass="page-footer"/>-->
+<!--    </referenceContainer>-->
+<!--    <referenceContainer name="columns.top">-->
+<!--        <block name="finest.bannerslider" as="finest.bannerslider" class="Magento\Framework\View\Element\Template" before="-" template="OpenTechiz_LayeredNavigationExtend::page/1columnfinest/bannerslider.phtml"/>-->
+<!--    </referenceContainer>-->
+<!--    <referenceContainer name="content">-->
+<!--        <block name="custom.category.top.filter" as="top_category_filter" class="OpenTechiz\LayeredNavigationExtend\Block\Page\CatalogFilterSubcategory" before="-" template="OpenTechiz_LayeredNavigationExtend::page/1columnfinest/top_category_filter.phtml"/>-->
+<!--    </referenceContainer>-->
+</layout>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\PageBuilder\Block\GoogleMapsApi">
+        <plugin name="pagebuilder_googlemapsapi" type="OpenTechiz\PageBuilderExtend\Plugin\PageBuilder\Block\GoogleMapsApiPlugin" sortOrder="1" />
+    </type>
+</config>

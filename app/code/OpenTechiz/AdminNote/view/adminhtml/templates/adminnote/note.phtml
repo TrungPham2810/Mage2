@@ -1,0 +1,44 @@
+<?php $_note = $this->getNote(); ?>
+
+<div class="adminnote-container">
+    <div class="notification-global<?php if ($_note->isHidden() && !$this->getDoNotHide()) : ?> adminnote-hidden<?php endif;?> adminnote-type-<?php echo $_note->getType(); ?>"
+         name ="<?php echo $_note->getNoteId() ?>">
+        <div class="f-right adminnote-manage-note">
+            <small>by <strong><?php echo $_note->getNameAuthor($_note->getCreatedBy()); ?></strong></small>
+            <small>on <strong><?php echo date("M j, Y",strtotime($_note->getCreatedAt()));?></strong></small>
+            <input type="hidden" id="id-note-page" value="<?php echo $_note->getNoteId(); ?>">
+
+            <a href="#" id="hide-note-page" name="1"  <?php if ( $_note->isHidden() ) :  ?> style="display: none;"<?php endif;?> >
+                <img src="<?php echo $block->getViewFileUrl('OpenTechiz_AdminNote::images/hide.gif') ?>" alt="Hide" title="Hide"  />
+            </a>
+
+            <a href="#" id="unhide-note-page" name="0" <?php if ( !$_note->isHidden() ) :  ?> style="display: none;"<?php endif;?> >
+                <img src="<?php echo $block->getViewFileUrl('OpenTechiz_AdminNote::images/show.gif') ?>" alt="Unhide" title="Unhide"  />
+            </a>
+
+            <input type="hidden" id="message-to-customer" value="<?= $block->escapeHtml(__('Are you sure you want to delete this note?')) ?>">
+            <?php if ( $_note->isEditable() ) : ?><a href="#" id="edit-note-page" ><img src="<?php echo $block->getViewFileUrl('OpenTechiz_AdminNote::images/edit.gif') ?>" alt="Edit Note" title="Edit Note" /></a><?php endif; ?>
+            <?php if ( $_note->isDeletable() ) : ?><a href="#" id="delete-note-page" ><img src="<?php echo $block->getViewFileUrl('OpenTechiz_AdminNote::images/delete.gif') ?>"  alt="Delete Note" title="Delete Note" /></a><?php endif; ?>
+
+        </div>
+
+        <span class="adminnote-note-content">
+		<strong class="label"><?php echo htmlspecialchars($_note->getTitle() ); ?>:</strong>
+        <span class="longnote"> <?php echo $_note->getNote(); ?> </span>
+	</span>
+
+        <span class="adminnote-note-edit" style="display: none;">
+        <select class="note-page-type" style="height:20px" >
+            <?php foreach ( $_note->getTypes() as $k => $v ) :?>
+                <option value="<?php echo $k; ?>" <?php if ( $k == $_note->getType() ) :?>selected<?php endif;?>><?php echo $v; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <textarea class="note-page-text" rows="<?php echo ceil(strlen($_note->getNote())/100) ?>" cols="100" style="height: auto;"  ><?php echo $_note->getNote(); ?></textarea>
+        <input type="hidden" class="user-admin-id" value = "<?php echo $block->getUserId() ?>">
+        <div class="buttons">
+            <button id="note-update" ><span>Save Note</span></button>
+            <button id="note-edit-cancel"><span>Cancel</span></button>
+        </div>
+    </span>
+    </div>
+</div>

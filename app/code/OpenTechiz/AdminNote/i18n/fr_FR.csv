@@ -1,0 +1,7 @@
+"Test Translate Module","Test Translate Module AdminNote"
+"ok di em","ok di em module AdminNote"
+"toi ten la %1 nam nay toi %2 tuoi","toi ten la %1 nam nay toi %2 tuoi"
+"{width}^{height} px","{width}^{height} px"
+"{0, select, f {She} m {He} other {It}} went to the store.","{0, select, f {She} m {He} other {It}} went to the store xxxxx."
+"Please enter {0} words or less.","Please enter {0} words or less after translate."
+"The value of is {0, choice, 0 #less 12| 12 #between 12 and 32| 32 #more than 32}","The value xxxxx of is {0, choice, 0 #less 12| 12 #between 12 and 32| 32 #more than 32}"

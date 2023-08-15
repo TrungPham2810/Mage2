@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd" extends="pagebuilder_base_form">
+
+    <fieldset name="general" sortOrder="20">
+        <field name="enable_lazyload" sortOrder="0" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">false</item>
+                    <item name="notice" xsi:type="string" translate="true">
+                        If enable Lazyload feature, you should enter input Image Media or Upload Image to can save setting.
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Enable Lazyload</label>
+                <dataScope>enable_lazyload</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">false</map>
+                            <map name="true" xsi:type="string">true</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="image_media" sortOrder="0" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="notice" xsi:type="string" translate="true">
+                        Please just use enter Image Media or use Upload Media. Don't use both of them at the same time.
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Image Media</label>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+</form>

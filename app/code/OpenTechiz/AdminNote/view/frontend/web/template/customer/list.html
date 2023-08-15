@@ -1,0 +1,29 @@
+<h2>list.html</h2>
+<hr>
+<br>
+<br>
+<h3 style="color: red">case show all by foreach</h3>
+<!-- ko foreach: elems() -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+<br>
+<br>
+<hr>
+<br>
+<br>
+<h3 style="color: red">case show separate child</h3>
+
+<render args="childTemplate"></render>
+
+<div data-bind="scope: requestChild('child_a')">
+
+    <!-- ko template: getTemplate() --><!-- /ko -->
+
+</div>
+
+<div>
+    <!-- ko foreach: getRegion('child_b') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+</div>
+

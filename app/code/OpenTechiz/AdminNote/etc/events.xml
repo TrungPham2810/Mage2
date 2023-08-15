@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+    <event name="sales_order_place_after">
+        <observer name="add_data_bestseller" instance="OpenTechiz\AdminNote\Observer\AddData" />
+    </event>
+
+    <event name="test_exception_event">
+        <observer name="test_exception_event_adminnote" instance="OpenTechiz\AdminNote\Observer\TestException" />
+    </event>
+
+</config>

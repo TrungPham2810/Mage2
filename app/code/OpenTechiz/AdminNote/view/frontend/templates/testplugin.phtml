@@ -1,0 +1,30 @@
+<?php
+/**
+ * Category layered navigation state
+ *
+ * @var $block \OpenTechiz\AdminNote\Block\TestPlugin
+ */
+
+?>
+<div class="testxxxx">
+    <div class="dit_me_may" style="height: 50px; background: red"><?= $block->testPlugin('xxxxxx')?></div>
+    <h1>
+        <?= __('Stone 1 Shape')?>
+    </h1>
+</div>
+<script>
+    require([
+        "jquery",
+        "mage/calendar",
+    ], function ($, jQuery) {
+        'use strict';
+        var body = $("body");
+        body.on('click',".dit_me_may", function () {
+            $('.testxxxx').remove();
+            // $(this).parent('.testxxxx').remove();
+            // $(this).closest('.testxxxx').remove();
+            // $('.wrapper_mobile_filter.more-filter-mobile ul li').removeClass("active");
+        });
+
+    });
+</script>

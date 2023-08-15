@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_PageBuilder:etc/content_type.xsd">
+    <type name="image"
+          label="Image"
+          component="Magento_PageBuilder/js/content-type"
+          preview_component="OpenTechiz_PageBuilderExtend/js/content-type/image/preview"
+          form="pagebuilder_image_form"
+          menu_section="media"
+          icon="icon-pagebuilder-image"
+          sortOrder="1"
+          translate="label">
+        <children default_policy="deny"/>
+        <appearances>
+            <appearance default="true"
+                        name="full-width"
+                        preview_template="OpenTechiz_PageBuilderExtend/content-type/image/full-width/preview"
+                        master_template="OpenTechiz_PageBuilderExtend/content-type/image/full-width/master"
+                        reader="OpenTechiz_PageBuilderExtend/js/master-format/read/image/configurable">
+                <elements>
+                    <element name="desktop_image">
+                        <style name="border" source="border_style" converter="Magento_PageBuilder/js/converter/style/border-style"/>
+                        <style name="border_color" source="border_color"/>
+                        <style name="border_width" source="border_width" converter="Magento_PageBuilder/js/converter/style/border-width"/>
+                        <style name="border_radius" source="border_radius" converter="Magento_PageBuilder/js/converter/style/remove-px"/>
+                        <static_style source="max-width" value="100%"/>
+                        <static_style source="height" value="auto"/>
+                        <attribute name="enable_lazyload" storage_key="enable_lazyload" source="enable_lazyload"
+                                   converter="OpenTechiz_PageBuilderExtend/js/content-type/video/converter/attribute/loop"/>
+                        <attribute name="data-src" source="data-src" converter="OpenTechiz_PageBuilderExtend/js/converter/image/attribute/data-src"/>
+                        <attribute name="image" source="src" converter="OpenTechiz_PageBuilderExtend/js/converter/image/attribute/image_upload/src"
+                                   preview_converter="Magento_PageBuilder/js/converter/attribute/preview/src"/>
+                        <attribute name="alt" source="alt"/>
+                        <attribute name="title_attribute" source="title"/>
+                    </element>
+                    <element name="mobile_image">
+                        <style name="border" source="border_style" converter="Magento_PageBuilder/js/converter/style/border-style"/>
+                        <style name="border_color" source="border_color"/>
+                        <style name="border_width" source="border_width" converter="Magento_PageBuilder/js/converter/style/border-width"/>
+                        <style name="border_radius" source="border_radius" converter="Magento_PageBuilder/js/converter/style/remove-px"/>
+                        <static_style source="max-width" value="100%"/>
+                        <static_style source="height" value="auto"/>
+                        <attribute name="enable_lazyload" storage_key="enable_lazyload" source="enable_lazyload"
+                                   converter="OpenTechiz_PageBuilderExtend/js/content-type/video/converter/attribute/loop"/>
+                        <attribute name="data-src" source="data-src" converter="OpenTechiz_PageBuilderExtend/js/converter/image/attribute/data-src"/>
+                        <attribute name="mobile_image" source="src" converter="OpenTechiz_PageBuilderExtend/js/converter/image/attribute/image_upload/src"
+                                   preview_converter="Magento_PageBuilder/js/converter/attribute/preview/src"/>
+                        <attribute name="alt" source="alt"/>
+                        <attribute name="title_attribute" source="title"/>
+                    </element>
+                    <element name="image_media">
+                        <style name="border" source="border_style" converter="Magento_PageBuilder/js/converter/style/border-style"/>
+                        <style name="border_color" source="border_color"/>
+                        <style name="border_width" source="border_width" converter="Magento_PageBuilder/js/converter/style/border-width"/>
+                        <style name="border_radius" source="border_radius" converter="Magento_PageBuilder/js/converter/style/remove-px"/>
+                        <static_style source="max-width" value="100%"/>
+                        <static_style source="height" value="auto"/>
+                        <attribute name="enable_lazyload" storage_key="enable_lazyload" source="enable_lazyload"
+                                   converter="OpenTechiz_PageBuilderExtend/js/content-type/video/converter/attribute/loop"/>
+                        <attribute name="data-src" source="data-src" converter="OpenTechiz_PageBuilderExtend/js/converter/image/attribute/data-src"/>
+                        <attribute name="image_media" source="src" converter="OpenTechiz_PageBuilderExtend/js/converter/image/attribute/image_media/src"
+                                   preview_converter="OpenTechiz_PageBuilderExtend/js/converter/image/attribute/image_media/preview/src"/>
+                        <attribute name="alt" source="alt"/>
+                        <attribute name="title_attribute" source="title"/>
+                    </element>
+                </elements>
+
+                <converters>
+                    <converter component="OpenTechiz_PageBuilderExtend/js/mass-converter/empty-mobile-image" name="empty_mobile_image">
+                        <config>
+                            <item name="desktop_image_variable" value="image"/>
+                            <item name="mobile_image_variable" value="mobile_image"/>
+                            <item name="image_media_variable" value="image_media"/>
+                        </config>
+                    </converter>
+                </converters>
+            </appearance>
+        </appearances>
+    </type>
+</config>

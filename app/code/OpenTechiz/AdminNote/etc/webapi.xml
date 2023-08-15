@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route method="GET" url="/V1/adminNote/:id">
+        <service class="OpenTechiz\AdminNote\Api\AdminNoteRepositoryInterface" method="getListApi"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+<!--    <route url="/V1/adminNote" method="POST">-->
+<!--        <service class="OpenTechiz\AdminNote\Api\AdminNoteRepositoryInterface" method="save"/>-->
+<!--        <resources>-->
+<!--            <resource ref="anonymous"/>-->
+<!--        </resources>-->
+<!--    </route>-->
+
+<!--    <route url="/V1/adminNote/:id" method="GET">-->
+<!--        <service class="OpenTechiz\AdminNote\Api\AdminNoteRepositoryInterface" method="getById"/>-->
+<!--        <resources>-->
+<!--            <resource ref="anonymous"/>-->
+<!--        </resources>-->
+<!--    </route>-->
+</routes>

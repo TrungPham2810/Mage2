@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::system">
+                    <resource id="OpenTechiz_AdminNote::admin_note" title="Admin Note" sortOrder="10">
+                        <resource id="OpenTechiz_AdminNote::page_note" title="Page Notes" sortOrder="40" >
+                            <resource id="OpenTechiz_AdminNote::edit" title="Edit Page Note" sortOrder="10" />
+                            <resource id="OpenTechiz_AdminNote::delete" title="Delete Page Note" sortOrder="20" />
+                            <resource id="OpenTechiz_AdminNote::write" title="Write Page Note" sortOrder="25" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
