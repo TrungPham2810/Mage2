@@ -1,0 +1,17 @@
+/**
+ * Copyright Wagento Creative LLC ©, All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+@import "module/history.less";
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .table-wrapper.orders-recent {
+    margin-top: 0;
+  }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+  .table-wrapper.orders-recent {
+    margin-top: 0;
+  }
+}

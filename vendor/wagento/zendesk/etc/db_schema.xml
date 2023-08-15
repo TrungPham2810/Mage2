@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="zendesk_ticket_order" engine="innodb" comment="Zendesk Ticket Order">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="varchar" name="ticket_id" nullable="true" length="255"
+                comment="Ticket Id"/>
+        <column xsi:type="varchar" name="increment_id" nullable="true" length="255"
+                comment="Increment Id"/>
+        <column xsi:type="varchar" name="order_id" nullable="true" length="255"
+                comment="Order Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+    <table name="sales_order">
+        <column name="reference_zendesk_id" xsi:type="int" unsigned="true" nullable="true" comment="Reference to Zendesk ticket order" />
+        <constraint xsi:type="foreign" referenceId="ORDER_ZENDESK_TICKET_ORDER_ID" table="sales_order" column="reference_zendesk_id"
+                    referenceTable="zendesk_ticket_order" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>

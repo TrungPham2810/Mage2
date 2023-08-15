@@ -1,0 +1,21 @@
+{
+    "zendesk_ticket_order": {
+        "column": {
+            "entity_id": true,
+            "ticket_id": true,
+            "increment_id": true,
+            "order_id": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "sales_order": {
+        "column": {
+            "reference_zendesk_id": true
+        },
+        "constraint": {
+            "SALES_ORDER_REFERENCE_ZENDESK_ID_ZENDESK_TICKET_ORDER_ENTITY_ID": true
+        }
+    }
+}

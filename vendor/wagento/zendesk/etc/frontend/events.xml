@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright Wagento Creative LLC ©, All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!--  Sync customer on ticket creation  -->
+    <event name="sync_zd_user">
+        <observer name="customer_sync" instance="Wagento\Zendesk\Observer\Sync"/>
+    </event>
+    <event name="update_zendesk_user_data">
+        <observer name="update_zd_user_data" instance="Wagento\Zendesk\Observer\Sync"/>
+    </event>
+</config>

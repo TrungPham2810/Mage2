@@ -1,0 +1,108 @@
+<?php
+/**
+ * Copyright Wagento Creative LLC ©, All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+
+/** @var \Wagento\Zendesk\Block\Adminhtml\Ticket\Reply $block */
+$authorId = $block->getTicketRequester();
+$comments = $block->getComments();
+$agentList = $block->getAgentUsers();
+?>
+<div class="page-main-actions">
+    <div class="page-actions floating-header">
+        <button id="back" title="Back" type="button" class="action- scalable back" onclick="location.href='<?=$block->getUrl("*/*")?>'">
+            <span><?= __("Back") ?></span>
+        </button>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading"></div>
+    <div class="panel-body body-panel">
+        <ul class="chat">
+            <?php foreach ($comments as $comment) : ?>
+
+                    <?php $right = $comment['author_id'] == $authorId; ?>
+                    <li class="bs-callout <?= $right ? 'bs-callout-primary right' : 'bs-callout-warning left'; ?>">
+                        <div class="chat-body">
+                            <div class="header">
+                                <small class="text-muted <?= $right ? '' : 'pull-right' ?>">
+                                    <?= date('Y-m-d h:i:s', strtotime($comment['created_at'])) ?>
+                                </small>
+                                <strong class="<?= $right ? 'pull-right' : '' ?>">
+                                    <?= $block->getUserName($comment['author_id']) ?>
+                                </strong>
+                                <?php if (!$comment['public']): ?>
+                                    <span style="background: black; color: white; border-radius: 10px; padding: 0 10px"><?= __('Internal Note') ?></span>
+                                <?php endif; ?>
+                            </div>
+                            <?= $comment['html_body']; ?>
+                        </div>
+                    </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+
+    <div class="panel-footer">
+        <form class="form" action="<?php echo $block->getActionUrl(); ?>" id="contact-form" method="post">
+            <div class="admin__fieldset-wrapper-content">
+                <fieldset class="admin__fieldset">
+                    <div class="admin__field" data-index="page_layout">
+                        <div class="admin__field-label">
+                            <label for="author_id">
+                                <span><?=__('Author')?></span>
+                            </label>
+                        </div>
+                        <div class="admin__field-control">
+                            <select class="admin__control-select" name="author_id" id="author_id">
+                                <option value=""><?= __('Dafault Api User') ?></option>
+                                <?php foreach ($agentList as $id => $name): ?>
+                                    <option value="<?= $id ?>"><?= $name ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="admin__field _required" data-index="status">
+                        <div class="admin__field-label" data-bind="visible: $data.labelVisible">
+                            <label data-bind="attr: {for: uid}" for="BX2FL9J">
+                                <span data-bind="attr: {'data-config-scope': $data.scopeLabel}, i18n: label">Status</span>
+                            </label>
+                        </div>
+                        <div class="admin__field-control">
+                            <select class="admin__control-select" name="status" id="BX2FL9J">
+                                <?php foreach ($block->getStatusList() as $k => $v): ?>
+                                    <option value="<?= $k ?>"><?= $v ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="admin__field" data-index="meta_keywords">
+                        <div class="admin__field-label">
+                            <label for="comment">
+                                <span><?=__('Message')?></span>
+                            </label>
+                        </div>
+                        <div class="admin__field-control">
+                            <textarea class="admin__control-textarea" name="comment" id="comment"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <input type="hidden" name="code" id="code" value="<?= $block->getTicketId(); ?>">
+                    <?= $block->getBlockHtml('formkey'); ?>
+                    <input type="hidden" name="hideit" id="hideit" value="">
+                    <button title="Submit" class="action submit primary">
+                        <span><?= __('Send') ?></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <doofinder_config_config>
+            <doofinder_layer>
+                <doofinder_layer_enabled>0</doofinder_layer_enabled>
+                <indice_callback>0</indice_callback>
+            </doofinder_layer>
+            <update_on_save>
+                <enabled>0</enabled>
+                <cron_expression>0 * * * *</cron_expression>
+                <export_product_prices>1</export_product_prices>
+                <image_size>&#x200B;</image_size>
+                <categories_in_navigation>0</categories_in_navigation>
+            </update_on_save>
+            <doofinder_integration>
+                <login_endpoint><![CDATA[https://app.doofinder.com/plugins/login/magento2]]></login_endpoint>
+                <signup_endpoint><![CDATA[https://app.doofinder.com/plugins/signup/magento2]]></signup_endpoint>
+                <display_layer_create_endpoint><![CDATA[https://app.doofinder.com/plugins/script/magento2]]></display_layer_create_endpoint>
+                <display_layer_state_endpoint><![CDATA[https://app.doofinder.com/plugins/state/magento2]]></display_layer_state_endpoint>
+            </doofinder_integration>
+            <installing_loop>
+                <status>0</status>
+            </installing_loop>
+        </doofinder_config_config>
+        <csp>
+            <policies>
+                <storefront>
+                    <frame-ancestors>
+                        <inline>0</inline>
+                    </frame-ancestors>
+                </storefront>
+            </policies>
+        </csp>
+    </default>
+</config>
