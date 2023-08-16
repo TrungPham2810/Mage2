@@ -3,7 +3,7 @@
     <body>
         <referenceContainer name="content">
             <block class="Magento\Framework\View\Element\Template" template="React_React::react-component.phtml" ifconfig="react_vue_config/react/enable"/>
-            <block class="Magento\Framework\View\Element\Template" template="React_React::vue-component.phtml" ifconfig="react_vue_config/vue/enable"/>
+<!--            <block class="Magento\Framework\View\Element\Template" template="React_React::vue-component.phtml" ifconfig="react_vue_config/vue/enable"/>-->
         </referenceContainer>
     </body>
 </page>
